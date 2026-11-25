@@ -1,0 +1,17 @@
+{
+  "name": "uni-assistant",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "1.7.0",
+    "@supabase/supabase-js": "2.119.0",
+    "openai": "7.54.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12",
+    "zod": "4.6.7"
+  }
+}

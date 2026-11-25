@@ -1,0 +1,16 @@
+# Each function checks who is calling itself (signed-in student, scheduler
+# secret, or the private calendar token), so the gateway JWT check is off.
+[functions.save-settings]
+verify_jwt = false
+
+[functions.oauth-start]
+verify_jwt = false
+
+[functions.oauth-callback]
+verify_jwt = false
+
+[functions.daily-check]
+verify_jwt = false
+
+[functions.calendar]
+verify_jwt = false
