@@ -5,6 +5,9 @@ import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import type { z } from "zod";
+// Loads zod at runtime: the SDK zod helpers need it as a peer, and the edge
+// bundler only includes it when the function graph imports it directly.
+import "zod";
 
 export type AiProvider = "anthropic" | "openai";
 

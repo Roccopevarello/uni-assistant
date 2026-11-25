@@ -67,9 +67,13 @@ Set the function secrets (Supabase dashboard > Edge Functions > Secrets, or
 Then open `supabase/setup/schedule.sql`, fill in the two placeholders and run it
 in the SQL editor. It calls the daily check every hour.
 
-**Sign-in emails:** in Authentication > Email Templates > Magic Link, include
-`{{ .Token }}` so students get a 6-digit code (the app signs in with the code,
-which works the same on web and phone).
+**Sign-in emails:** the app signs in with a 6-digit code, which works the same
+on web and phone. Supabase's built-in email sender only reaches your own team,
+sends a couple of emails an hour, and on the free plan its templates can't be
+changed. So connect a real sender first (Authentication > SMTP Settings, e.g. a
+free [Resend](https://resend.com) account), then in Authentication > Email
+Templates put `{{ .Token }}` in both the Magic Link and Confirm signup
+templates, and set the code length to 6.
 
 ### 2. Microsoft (IE / Outlook email)
 
