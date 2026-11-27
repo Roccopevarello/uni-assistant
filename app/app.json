@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Uni Assistant",
+    "slug": "uni-assistant",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "edu.ie.uniassistant"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "edu.ie.uniassistant"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "Uni Assistant"
+    },
+    "plugins": [
+      "expo-web-browser",
+      "expo-notifications"
+    ],
+    "scheme": "uniassistant"
+  }
+}
