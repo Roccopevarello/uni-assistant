@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { supabase } from "../lib/supabase";
 import { Body, Button, Card, Field, Notice, useTheme } from "../ui";
 
@@ -15,7 +15,10 @@ export default function SignIn() {
   async function sendCode() {
     setBusy(true);
     setError(null);
-    const { error } = await supabase.auth.signInWithOtp({ email: email.trim().toLowerCase() });
+    const { error } = await supabase.auth.signInWithOtp({
+      email: email.trim().toLowerCase(),
+      options: { emailRedirectTo: Platform.OS === "web" ? window.location.origin : undefined },
+    });
     setBusy(false);
     if (error) setError(error.message);
     else setSent(true);
@@ -50,7 +53,9 @@ export default function SignIn() {
           </>
         ) : (
           <>
-            <Body>We sent a 6-digit code to {email}.</Body>
+            <Body>
+              We emailed {email}. Enter the 6-digit code from it{Platform.OS === "web" ? ", or just click the link in the email" : ""}.
+            </Body>
             <Field label="Code" value={code} onChangeText={setCode} keyboardType="number-pad" placeholder="123456" autoComplete="one-time-code" />
             <Button label="Sign in" onPress={verify} busy={busy} disabled={code.trim().length < 6} />
             <Button label="Use a different email" kind="secondary" onPress={() => { setSent(false); setCode(""); }} />

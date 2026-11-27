@@ -13,7 +13,8 @@ export const supabase = createClient(url || "https://placeholder.supabase.co", a
     storage: Platform.OS === "web" ? undefined : AsyncStorage,
     autoRefreshToken: true,
     persistSession: true,
-    detectSessionInUrl: false,
+    // On the web, the link in the sign-in email also works: it returns here with the session in the URL.
+    detectSessionInUrl: Platform.OS === "web",
   },
 });
 
